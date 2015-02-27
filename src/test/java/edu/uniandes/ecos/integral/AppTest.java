@@ -1,38 +1,34 @@
+/*
+*Clase para realizar las pruebas unitarias del programa
+*@author: José Javier Virviescas Toledo
+*@version: 1.0
+*/
 package edu.uniandes.ecos.integral;
 
-import junit.framework.Test;
+import java.text.DecimalFormat;
+import static junit.framework.Assert.assertTrue;
 import junit.framework.TestCase;
-import junit.framework.TestSuite;
 
-/**
- * Unit test for simple App.
- */
-public class AppTest 
-    extends TestCase
-{
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
-    {
-        super( testName );
+public class AppTest extends TestCase{
+    
+    DecimalFormat df = new DecimalFormat("#0.00000");
+ 
+    public void testDatos1(){
+        HallarValores  valores = new HallarValores();
+        Data data = valores.valorConErrorAceptable(HallarValores.datos1());
+        assertTrue( df.format(data.getP()).equals("0,35006") );
     }
-
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
+    
+    public void testDatos2(){
+        HallarValores valores = new HallarValores();
+        Data data = valores.valorConErrorAceptable(HallarValores.datos2());
+        assertTrue( df.format(data.getP()).equals("0,36757") );
     }
-
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
+    
+    public void testDatos3(){
+        HallarValores valores = new HallarValores();
+        Data data = valores.valorConErrorAceptable(HallarValores.datos3());
+        assertTrue( df.format(data.getP()).equals("0,49500") );
     }
+    
 }
